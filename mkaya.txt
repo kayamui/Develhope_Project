@@ -14,6 +14,41 @@ INSERT INTO Categories Values
 
 SELECT * FROM Products p ;
 UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 1;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 2;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 3;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 4;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 5;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 6;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
+WHERE CategoryID = 7;
+SELECT * FROM Categories c ;
+
+SELECT * FROM Products p ;
+UPDATE Products SET CategoryID = CategoryID * 10
 WHERE CategoryID = 8;
 SELECT * FROM Categories c ;
 
