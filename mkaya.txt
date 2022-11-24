@@ -48,3 +48,4 @@ UPDATE Products SET CategoryID = 9
 WHERE CategoryID = "vegan";
 SELECT * FROM Products p 
 ORDER BY CategoryID ASC ;
+What the heck was that?
