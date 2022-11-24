@@ -1,4 +1,4 @@
----- QUESTION 1: Which is / are the top suppliers (we have more products in stock) of Confections products?
+----- QUESTION 1: Which is / are the top suppliers (we have more products in stock) of Confections products?
 SELECT p.ProductID , s.CompanyName ,  p.ProductName , SUM(od.Quantity) AS Quantity , c.CategoryName  FROM Categories c
 JOIN Products p ON p.CategoryID  = c.CategoryID 
 JOIN Suppliers s ON s.SupplierID = p.SupplierID 
