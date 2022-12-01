@@ -1,0 +1,44 @@
+--- Which is / are the top suppliers (we have more products in stock) of *Confections* products? WK2.1
+
+SELECT s.SupplierID, s.CompanyName AS suppliers_name, c.CategoryName, SUM(p.UnitsInStock) AS products_in_stock
+FROM Products p 
+JOIN Categories c 
+ON c.CategoryID = p.CategoryID 
+JOIN Suppliers s 
+ON p.SupplierID = s.SupplierID 
+WHERE c.CategoryName = "Confections"
+GROUP BY suppliers_name
+ORDER BY products_in_stock DESC 
+LIMIT 1;
+
+
+---The company is studying to open a new city (to send goods) in Vilna and the market research teams requires to. wk2.2
+--know which is the top sold product in a nearby city to start with more stock with this product. Which is the most popular (purchased) product in *Berlin*?
+
+SELECT p.ProductName AS product, o.ShipCity AS city, od.Quantity  AS purchased_product
+FROM "Order Details" od 
+JOIN Products p 
+ON p.ProductID = od.ProductID 
+JOIN Orders o 
+ON o.OrderID = od.OrderID 
+WHERE city = 'Berlin'
+GROUP BY p.ProductName
+ORDER BY od.Quantity DESC 
+LIMIT 1;
+
+
+--The company *Maison Dewey* complained about having a bad experience with all its orders, wk2.2
+--what are the telephone numbers of the shippers that carried the products?
+
+SELECT p.ProductName AS product_name, c.CompanyName AS company_name_of_customers, s.Phone AS shippers_phone_number 
+FROM "Order Details" od 
+JOIN Products p 
+ON p.ProductID = od.ProductID 
+JOIN Orders o 
+ON o.OrderID = od.OrderID 
+JOIN Customers c 
+ON c.CustomerID = o.CustomerID 
+JOIN Shippers s 
+ON s.ShipperID = o.ShipVia 
+WHERE c.CompanyName = 'Maison Dewey'
+GROUP BY s.Phone 

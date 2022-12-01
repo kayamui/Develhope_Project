@@ -1,0 +1,12 @@
+--#### Which (cities) sold the products supplied by the top supplier (the one we have more items in stock)?
+SELECT s.SupplierID, s.CompanyName,  o.ShipCity, SUM(p.UnitsInStock)
+FROM "Order Details" od 
+JOIN  Orders o
+ON o.OrderID = od.OrderID 
+JOIN Products p 
+ON p.ProductID = od.ProductID 
+JOIN Suppliers s 
+ON p.SupplierID = s.SupplierID
+GROUP BY o.shipcity
+ORDER BY SUM(p.UnitsInStock) DESC
+LIMIT 5;

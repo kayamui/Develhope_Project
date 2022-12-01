@@ -1,0 +1,91 @@
+SELECT * FROM Products p 
+
+SELECT * FROM Categories c 
+--at the update for Categoriesid, we were meant to just do this:
+--UPDATE Categories SET CategoryName = 'Vegetables/fruits', Description = 'Raw or prepared vegetables and fruits'
+--WHERE ROWID = 1
+--UPDATE Categories SET CategoryName = 'Beverages', Description = 'Soft drinks, coffees, teas, beers, and ales'
+--WHERE ROWID = 2
+
+
+INSERT INTO Categories VALUES (0,'Confections', 'Desserts, candies, and sweet breads', NULL);
+INSERT INTO Categories VALUES (9, 'vegan', 'Does not contain any animal-derived', NULL);
+UPDATE Categories SET CategoryName = 'Vegetables/Fruits', Description = 'Raw or prepared vegetables and fruits'
+WHERE CategoryID = 1;
+UPDATE Categories SET CategoryName = 'Beverages', Description = 'Soft drinks, coffees, teas, beers, and ales'
+WHERE CategoryID = 2;
+UPDATE Categories SET CategoryName = 'Condiments', Description = 'Sweet and savory sauces, relishes, spreads, and seasonings'
+WHERE CategoryID = 3;
+UPDATE Categories SET CategoryName = 'Seafood', Description = 'Seaweed and fish'
+WHERE CategoryID = 4;
+UPDATE Categories SET CategoryName = 'Dairy Products', Description = 'Food products made from (or containing) milk'
+WHERE CategoryID = 5;
+UPDATE Categories SET CategoryName = 'Grains/Cereals', Description = 'Breads, crackers, pasta, and cereal'
+WHERE CategoryID = 6;
+UPDATE Categories SET CategoryName = 'Meat/Poultry', Description = 'Raw and Prepared meats'
+WHERE CategoryID = 7;
+UPDATE Categories SET CategoryName = 'Produce	Dried', Description = 'Dried fruit and bean curd'
+WHERE CategoryID = 8;
+
+
+SELECT * FROM Products p 
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 1;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 2;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 3;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 4;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 5;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 6;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 7;
+UPDATE Products SET CategoryID = CategoryID *10
+WHERE CategoryID = 8;
+----
+
+SELECT * FROM Products p 
+UPDATE Products SET CategoryID = 2
+WHERE CategoryID = 10;
+UPDATE Products SET CategoryID = 0
+WHERE CategoryID = 30;
+UPDATE Products SET CategoryID = 3
+WHERE CategoryID = 20;
+UPDATE Products SET CategoryID = 5
+WHERE CategoryID = 40;
+UPDATE Products SET CategoryID = 6
+WHERE CategoryID = 50;
+UPDATE Products SET CategoryID = 7
+WHERE CategoryID = 60;
+UPDATE Products SET CategoryID = 8
+WHERE CategoryID = 70;
+UPDATE Products SET CategoryID = 4
+WHERE CategoryID = 80;
+--
+UPDATE Products SET CategoryID = 5
+WHERE CategoryID = 'dairy';
+UPDATE Products SET CategoryID = 1
+WHERE CategoryID = 'fruit';
+UPDATE Products SET CategoryID = 1
+WHERE CategoryID = 'vegetable';
+UPDATE Products SET CategoryID = 6
+WHERE CategoryID = 'bakery';
+UPDATE Products SET CategoryID = 7
+WHERE CategoryID = 'meat';
+UPDATE Products SET CategoryID = 9
+WHERE CategoryID = 'vegan';
+SELECT * FROM Products p 
+
+
+--Along with the new added products, there might have been newly introduced errors in some columns or some no-existing values in related tables. 
+Can you tell if there is any inconsistent data? How would you fix it?
+**Solution**: Yes, some products have a non-existent SupplierID. It cannot be fixed as there is missing information, side joins would do but an 
+--"unknown" supplier (with all the column values set to "unknown" could be created to evade this problem
+
+SELECT *
+FROM Products p 
+Left join Suppliers s 
+on p.SupplierID = s.SupplierID 
